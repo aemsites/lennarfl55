@@ -15,6 +15,46 @@ import {
 } from './aem.js';
 
 /**
+ * create an element.
+ * @param {string} tagName the tag for the element
+ * @param {object} props properties to apply
+ * @param {string|Element} html content to add
+ * @returns the element
+ */
+export const createElement = (tagName, props, html) => {
+  const elem = document.createElement(tagName);
+  if (props) {
+    Object.keys(props).forEach((propName) => {
+      const val = props[propName];
+      if (propName === 'class') {
+        const classesArr = (typeof val === 'string') ? [val] : val;
+        elem.classList.add(...classesArr);
+      } else {
+        elem.setAttribute(propName, val);
+      }
+    });
+  }
+
+  if (html) {
+    const appendEl = (el) => {
+      if (el instanceof HTMLElement || el instanceof SVGElement) {
+        elem.append(el);
+      } else {
+        elem.insertAdjacentHTML('beforeend', el);
+      }
+    };
+
+    if (Array.isArray(html)) {
+      html.forEach(appendEl);
+    } else {
+      appendEl(html);
+    }
+  }
+
+  return elem;
+};
+
+/**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
  */
@@ -28,6 +68,82 @@ function buildHeroBlock(main) {
     main.prepend(section);
   }
 }
+
+function buildVideoBlock(main) {
+  const link = main.querySelector('a');
+  const isVideoLink = link.href.includes('.mp4');
+  const section = link.closest('div');
+
+  if (!isVideoLink) {
+    return;
+  }
+
+  section.append(buildBlock('video', { elems: [link] }));
+  section.classList.add('autoblocked-video');
+  const images = section.querySelectorAll('picture');
+  
+  if (images) {
+    const imageDivs = [];
+    [...images].forEach((img) => {
+      const wrapperDiv = createElement('div', {}, createElement('div', {}, img));
+      imageDivs.push(wrapperDiv);
+    });
+
+    section.append(buildBlock('carousel', { elems: imageDivs }));
+  }
+
+  main.prepend(section);
+}
+
+/**
+ * Wraps images followed by links within a matching <a> tag.
+ * @param {Element} container The container element
+ */
+export const wrapImagesInLinks = (container) => {
+  const ignorePatterns = ['/fragments/', '/forms/'];
+  const pictures = container.querySelectorAll('picture');
+
+  pictures.forEach((pic) => {
+    // Case 1: <picture><br/><a>
+    if (
+      pic.nextElementSibling?.tagName === 'BR'
+      && pic.nextElementSibling.nextElementSibling?.tagName === 'A'
+    ) {
+      const link = pic.nextElementSibling.nextElementSibling;
+      if (link.textContent.includes(link.getAttribute('href'))) {
+        if (ignorePatterns.some((pattern) => link.getAttribute('href').includes(pattern))) {
+          return;
+        }
+        link.classList.remove('button');
+        pic.nextElementSibling.remove();
+        link.innerHTML = pic.outerHTML;
+        pic.replaceWith(link);
+      }
+      return;
+    }
+
+    // Case 2: <p><picture></p><p><a></p>
+    const parent = pic.parentElement;
+    const nextSibling = parent.nextElementSibling;
+
+    if (
+      parent.tagName === 'P'
+      && nextSibling?.tagName === 'P'
+      && nextSibling.children.length === 1
+    ) {
+      const link = nextSibling.querySelector('a');
+      if (link && link.textContent.includes(link.getAttribute('href'))) {
+        if (ignorePatterns.some((pattern) => link.getAttribute('href').includes(pattern))) {
+          return;
+        }
+        link.classList.remove('button');
+        link.parentElement.remove();
+        link.innerHTML = pic.outerHTML;
+        pic.replaceWith(link);
+      }
+    }
+  });
+};
 
 /**
  * load fonts.css and set a session storage flag
@@ -48,6 +164,7 @@ async function loadFonts() {
 function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
+    buildVideoBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

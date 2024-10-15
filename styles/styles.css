@@ -39,7 +39,7 @@
   --heading-font-size-xs: 22px;
 
   /* nav height */
-  --nav-height: 124px;
+  --nav-height: 100px;
 }
 
 /* fallback fonts */
@@ -236,17 +236,11 @@ main > .section {
 
 main > .section > div {
   margin: auto;
-  padding: 0 24px;
+  padding: 0 15px;
 }
 
 main > .section:first-of-type {
   margin-top: 0;
-}
-
-@media (width >= 900px) {
-  main > .section > div {
-    padding: 0 32px;
-  }
 }
 
 /* section metadata */

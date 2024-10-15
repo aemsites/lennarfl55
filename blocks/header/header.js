@@ -1,4 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
+import { wrapImagesInLinks } from '../../scripts/scripts.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 /**
@@ -20,5 +21,6 @@ export default async function decorate(block) {
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
+  wrapImagesInLinks(navWrapper);
   block.append(navWrapper);
 }

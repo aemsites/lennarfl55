@@ -4,20 +4,31 @@ header .nav-wrapper {
   z-index: 2;
   position: fixed;
   color: var(--color-white);
+  box-shadow: 0 .2rem .2rem rgba(0, 0, 0, .2);
 }
 
 header .nav-wrapper > nav > .section > .default-content-wrapper {
-  padding: 42px 24px 24px 24px;
+  padding: 42px 15px 24px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 header .nav-wrapper > nav > .section > .default-content-wrapper img {
-  max-width: 200px;
+  max-width: 130px;
   height: auto;
 }
 
 header .nav-wrapper > nav > .section > .default-content-wrapper p {
-  font-size: 22px;
+  font-size: 16px;
+}
+
+@media (min-width: 900px ) {
+  header .nav-wrapper > nav > .section > .default-content-wrapper p {
+    font-size: 22px;
+  }
+
+  header .nav-wrapper > nav > .section > .default-content-wrapper img {
+    max-width: 200px;
+  }
 }
