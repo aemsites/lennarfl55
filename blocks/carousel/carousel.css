@@ -67,24 +67,24 @@
     justify-content: center;
     gap: 6px 12px;
     padding: 12px;
-    background-color: var(--light-color);
     line-height: 0;
+    display: none;
   }
   
   .carousel .carousel-slide-indicator button {
-    width: 24px;
-    height: 24px;
+    width: 8px;
+    height: 8px;
     margin: 0;
     padding: 0;
     border-radius: 50%;
-    background-color: #dadada;
+    background-color: #e7a423;
     transition: background-color 0.2s;
   }
   
   .carousel .carousel-slide-indicator button:disabled,
   .carousel .carousel-slide-indicator button:hover,
   .carousel .carousel-slide-indicator button:focus-visible {
-    background-color: var(--text-color);
+    background-color: var(--color-white);
   }
   
   .carousel .carousel-navigation-buttons {

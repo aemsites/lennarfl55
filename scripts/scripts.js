@@ -69,7 +69,11 @@ function buildHeroBlock(main) {
   }
 }
 
-function buildVideoBlock(main) {
+
+/**
+ * Autoblock a video and carousel together based on a given structure.
+ */
+function buildVideoAndCarouselBlock(main) {
   const link = main.querySelector('a');
   const isVideoLink = link.href.includes('.mp4');
   const section = link.closest('div');
@@ -164,7 +168,7 @@ async function loadFonts() {
 function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
-    buildVideoBlock(main);
+    buildVideoAndCarouselBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
