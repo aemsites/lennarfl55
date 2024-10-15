@@ -12,7 +12,9 @@
 
 :root {
   /* colors */
-  --background-color: white;
+  --brand-primary: #1d3e74;
+  --color-white: #fff;
+  --background-color: var(--color-white);
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #131313;
@@ -37,7 +39,7 @@
   --heading-font-size-xs: 22px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 124px;
 }
 
 /* fallback fonts */
@@ -233,7 +235,6 @@ main > .section {
 }
 
 main > .section > div {
-  max-width: 1200px;
   margin: auto;
   padding: 0 24px;
 }
