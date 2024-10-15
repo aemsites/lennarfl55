@@ -6,10 +6,24 @@ footer {
 footer .footer > div {
   margin: auto;
   padding: 40px 24px 24px;
+  color: #2d2d2d;
+  font-size: 13px;
+  max-width: 1100px;
+  text-align: left;
+  text-align: justify;
 }
 
 footer .footer p {
   margin: 0;
+  padding-bottom: 12px;
+}
+
+footer::after {
+  content: '';
+  height: 60px;
+  position: relative;
+  display: block;
+  background: var(--brand-primary);
 }
 
 @media (width >= 900px) {
