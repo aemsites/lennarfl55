@@ -18,7 +18,7 @@ main > .section > div.banner-wrapper {
 }
 
 .banner.secondary::after {
-    background: rgb(231,164,33);
+    background: rgb(231 164 33);
 }
 
 .banner.right::after {

@@ -62,7 +62,6 @@
   }
   
   .carousel .carousel-slide-indicators {
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 6px 12px;

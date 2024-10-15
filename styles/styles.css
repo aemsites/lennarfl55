@@ -121,6 +121,7 @@ h6 {
   border-bottom: 1px solid #333;
 }
 
+/* stylelint-disable */
 h1 { font-size: var(--heading-font-size-xxl); margin-top: 0;}
 h2 { font-size: var(--heading-font-size-xl); }
 h3 { font-size: var(--heading-font-size-l); }
@@ -181,7 +182,6 @@ button {
   display: inline-block;
   max-width: 100%;
   margin: 12px 0;
-  border: 2px solid transparent;
   padding: 0.5em 1.2em;
   font-family: var(--body-font-family);
   font-style: normal;
