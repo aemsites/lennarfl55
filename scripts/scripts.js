@@ -55,22 +55,6 @@ export const createElement = (tagName, props, html) => {
 };
 
 /**
- * Builds hero block and prepends to main in a new section.
- * @param {Element} main The container element
- */
-function buildHeroBlock(main) {
-  const h1 = main.querySelector('h1');
-  const picture = main.querySelector('picture');
-  // eslint-disable-next-line no-bitwise
-  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
-    const section = document.createElement('div');
-    section.append(buildBlock('hero', { elems: [picture, h1] }));
-    main.prepend(section);
-  }
-}
-
-
-/**
  * Autoblock a video and carousel together based on a given structure.
  */
 function buildVideoAndCarouselBlock(main) {
@@ -85,7 +69,7 @@ function buildVideoAndCarouselBlock(main) {
   section.append(buildBlock('video', { elems: [link] }));
   section.classList.add('autoblocked-video');
   const images = section.querySelectorAll('picture');
-  
+
   if (images) {
     const imageDivs = [];
     [...images].forEach((img) => {
@@ -167,7 +151,6 @@ async function loadFonts() {
  */
 function buildAutoBlocks(main) {
   try {
-    // buildHeroBlock(main);
     buildVideoAndCarouselBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
