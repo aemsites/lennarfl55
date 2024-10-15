@@ -21,7 +21,7 @@ main > .section > div.banner-wrapper {
     background: rgb(231,164,33);
 }
 
-.banner.secondary.right::after {
+.banner.right::after {
     left: initial;
     right: 0;
 }
