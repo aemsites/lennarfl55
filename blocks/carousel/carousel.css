@@ -109,6 +109,7 @@
     padding: 0;
     background-color: rgba(19 19 19 / 25%);
     transition: background-color 0.2s;
+    border: 0;
   }
   
   .carousel .carousel-navigation-buttons button:hover,

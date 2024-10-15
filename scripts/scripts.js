@@ -167,7 +167,7 @@ async function loadFonts() {
  */
 function buildAutoBlocks(main) {
   try {
-    buildHeroBlock(main);
+    // buildHeroBlock(main);
     buildVideoAndCarouselBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console

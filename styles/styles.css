@@ -13,13 +13,15 @@
 :root {
   /* colors */
   --brand-primary: #1d3e74;
+  --brand-secondary: #66c2bd;
   --color-white: #fff;
   --background-color: var(--color-white);
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --link-color: var(--brand-primary);
+  --link-hover-color: var(--brand-secondary);
+  --heading-color: #68C1BD;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -58,7 +60,7 @@
 @media (width >= 900px) {
   :root {
     /* body sizes */
-    --body-font-size-m: 18px;
+    --body-font-size-m: 20px;
     --body-font-size-s: 16px;
     --body-font-size-xs: 14px;
 
@@ -80,6 +82,7 @@ body {
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
   line-height: 1.6;
+  text-align: center;
 }
 
 body.appear {
@@ -112,9 +115,13 @@ h6 {
   font-weight: 600;
   line-height: 1.25;
   scroll-margin: 40px;
+  color: var(--heading-color);
+  display: inline-block;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #333;
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
+h1 { font-size: var(--heading-font-size-xxl); margin-top: 0;}
 h2 { font-size: var(--heading-font-size-xl); }
 h3 { font-size: var(--heading-font-size-l); }
 h4 { font-size: var(--heading-font-size-m); }
@@ -175,7 +182,6 @@ button {
   max-width: 100%;
   margin: 12px 0;
   border: 2px solid transparent;
-  border-radius: 2.4em;
   padding: 0.5em 1.2em;
   font-family: var(--body-font-family);
   font-style: normal;
@@ -189,6 +195,9 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 16px;
+  text-transform: uppercase;
+  border:1px solid var(--brand-primary);
 }
 
 a.button:hover,
@@ -197,6 +206,7 @@ button:hover,
 button:focus {
   background-color: var(--link-hover-color);
   cursor: pointer;
+  border: 1px solid #000;
 }
 
 button:disabled,
@@ -232,6 +242,10 @@ main img {
 /* sections */
 main > .section {
   margin: 40px 0;
+}
+
+main .section > .default-content-wrapper {
+  max-width: 1200px;
 }
 
 main > .section > div {

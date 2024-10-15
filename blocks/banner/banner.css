@@ -1,0 +1,27 @@
+main > .section > div.banner-wrapper {
+    padding: 0;
+    margin-block-start: 36px;
+}
+
+.banner {
+    position: relative;
+}
+
+.banner::after {
+    content: '';
+    width: 100px;
+    background: var(--brand-primary);
+    position: absolute;
+    height: calc(100% - 9px);
+    top: 0;
+    left: 0;
+}
+
+.banner.secondary::after {
+    background: rgb(231,164,33);
+}
+
+.banner.secondary.right::after {
+    left: initial;
+    right: 0;
+}
