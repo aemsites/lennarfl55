@@ -21,6 +21,8 @@ header .nav-wrapper > nav > .section > .default-content-wrapper img {
 
 header .nav-wrapper > nav > .section > .default-content-wrapper p {
   font-size: 16px;
+  text-align: left;
+  padding-right: 24px;
 }
 
 @media (width >= 900px ) {
