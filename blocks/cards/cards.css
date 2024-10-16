@@ -36,9 +36,10 @@
   padding-bottom: 0;
 }
 
-.cards .cards-card-body h3 {
+.cards .cards-card-body h2 {
   font-weight: normal;
   border-bottom: 0;
+  font-size: 30px;
 }
 
 .cards .cards-card-image {
