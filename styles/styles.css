@@ -124,7 +124,7 @@ h6 {
 /* stylelint-disable */
 h1 { font-size: var(--heading-font-size-xxl); margin-top: 0;}
 h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
+h3 { font-size: var(--heading-font-size-l);  color: var(--text-color); border-bottom: 0;}
 h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
